@@ -22,8 +22,14 @@ app.get('/weather', async (req, res) => {
     }
 
     try {
+        // Fetch weather data using OpenWeatherMap API (imperial for Fahrenheit)
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`);
-        res.json(response.data); // Send the weather data back as JSON
+        
+        // Log the API response to check if units are being returned correctly
+        console.log(response.data);
+        
+        // Send the weather data back as JSON
+        res.json(response.data);
     } catch (error) {
         console.error('Error fetching weather data:', error.response ? error.response.data : error.message);
         res.status(500).json({ error: 'Failed to fetch weather data' });
