@@ -22,7 +22,7 @@ app.get('/weather', async (req, res) => {
     }
 
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`);
         res.json(response.data); // Send the weather data back as JSON
     } catch (error) {
         console.error('Error fetching weather data:', error.response ? error.response.data : error.message);
